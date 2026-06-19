@@ -1,0 +1,2591 @@
+use food_delivery_db
+switched to db food_delivery_db
+db.customers.insertMany([
+{
+customer_id:1,
+name:"Saran",
+email:"saran@gmail.com",
+phone:"9876543210",
+city:"Bangalore"
+},
+{
+customer_id:2,
+name:"Priya",
+email:"priya@gmail.com",
+phone:"9876543211",
+city:"Hyderabad"
+},
+{
+customer_id:3,
+name:"Rahul",
+email:"rahul@gmail.com",
+phone:"9876543212",
+city:"Chennai"
+},
+{
+customer_id:4,
+name:"Deepa",
+email:"deepa@gmail.com",
+phone:"9876543213",
+city:"Pune"
+},
+{
+customer_id:5,
+name:"Anjali",
+email:"anjali@gmail.com",
+phone:"9876543214",
+city:"Bangalore"
+}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a3413fbe8ce041a34f7f985'),
+    '1': ObjectId('6a3413fbe8ce041a34f7f986'),
+    '2': ObjectId('6a3413fbe8ce041a34f7f987'),
+    '3': ObjectId('6a3413fbe8ce041a34f7f988'),
+    '4': ObjectId('6a3413fbe8ce041a34f7f989')
+  }
+}
+db.restaurants.insertMany([
+{
+restaurant_id:101,
+restaurant_name:"Pizza Hut",
+city:"Bangalore",
+rating:4.5
+},
+{
+restaurant_id:102,
+restaurant_name:"Dominos",
+city:"Hyderabad",
+rating:4.3
+},
+{
+restaurant_id:103,
+restaurant_name:"Burger King",
+city:"Chennai",
+rating:4.4
+},
+{
+restaurant_id:104,
+restaurant_name:"KFC",
+city:"Pune",
+rating:4.2
+}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a341456e8ce041a34f7f98a'),
+    '1': ObjectId('6a341456e8ce041a34f7f98b'),
+    '2': ObjectId('6a341456e8ce041a34f7f98c'),
+    '3': ObjectId('6a341456e8ce041a34f7f98d')
+  }
+}
+db.menu.insertMany([
+{
+item_id:1,
+restaurant_id:101,
+item_name:"Veg Pizza",
+price:250
+},
+{
+item_id:2,
+restaurant_id:101,
+item_name:"Chicken Pizza",
+price:350
+},
+{
+item_id:3,
+restaurant_id:102,
+item_name:"Cheese Burst Pizza",
+price:300
+},
+{
+item_id:4,
+restaurant_id:103,
+item_name:"Veg Burger",
+price:180
+},
+{
+item_id:5,
+restaurant_id:104,
+item_name:"Chicken Bucket",
+price:550
+}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a341479e8ce041a34f7f98e'),
+    '1': ObjectId('6a341479e8ce041a34f7f98f'),
+    '2': ObjectId('6a341479e8ce041a34f7f990'),
+    '3': ObjectId('6a341479e8ce041a34f7f991'),
+    '4': ObjectId('6a341479e8ce041a34f7f992')
+  }
+}
+db.orders.insertMany([
+{
+order_id:1001,
+customer_id:1,
+restaurant_id:101,
+items:[
+{
+item_name:"Veg Pizza",
+quantity:2,
+price:250
+}
+],
+total_amount:500,
+status:"Delivered"
+},
+{
+order_id:1002,
+customer_id:2,
+restaurant_id:102,
+items:[
+{
+item_name:"Cheese Burst Pizza",
+quantity:1,
+price:300
+}
+],
+total_amount:300,
+status:"Pending"
+},
+{
+order_id:1003,
+customer_id:3,
+restaurant_id:103,
+items:[
+{
+item_name:"Veg Burger",
+quantity:2,
+price:180
+}
+],
+total_amount:360,
+status:"Delivered"
+}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a341482e8ce041a34f7f993'),
+    '1': ObjectId('6a341482e8ce041a34f7f994'),
+    '2': ObjectId('6a341482e8ce041a34f7f995')
+  }
+}
+db.payments.insertMany([
+{
+payment_id:501,
+order_id:1001,
+payment_method:"UPI",
+amount:500,
+status:"Success"
+},
+{
+payment_id:502,
+order_id:1002,
+payment_method:"Credit Card",
+amount:300,
+status:"Pending"
+},
+{
+payment_id:503,
+order_id:1003,
+payment_method:"Cash",
+amount:360,
+status:"Success"
+}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a341493e8ce041a34f7f996'),
+    '1': ObjectId('6a341493e8ce041a34f7f997'),
+    '2': ObjectId('6a341493e8ce041a34f7f998')
+  }
+}
+db.delivery_agents.insertMany([
+{
+agent_id:1,
+agent_name:"Kumar",
+city:"Bangalore",
+rating:4.8
+},
+{
+agent_id:2,
+agent_name:"Arjun",
+city:"Hyderabad",
+rating:4.6
+},
+{
+agent_id:3,
+agent_name:"Sneha",
+city:"Chennai",
+rating:4.9
+}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a3414b1e8ce041a34f7f999'),
+    '1': ObjectId('6a3414b1e8ce041a34f7f99a'),
+    '2': ObjectId('6a3414b1e8ce041a34f7f99b')
+  }
+}
+db.reviews.insertMany([
+{
+review_id:1,
+customer_id:1,
+restaurant_id:101,
+rating:5,
+comment:"Excellent service"
+},
+{
+review_id:2,
+customer_id:2,
+restaurant_id:102,
+rating:4,
+comment:"Good taste"
+},
+{
+review_id:3,
+customer_id:3,
+restaurant_id:103,
+rating:5,
+comment:"Very tasty"
+}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a3414bee8ce041a34f7f99c'),
+    '1': ObjectId('6a3414bee8ce041a34f7f99d'),
+    '2': ObjectId('6a3414bee8ce041a34f7f99e')
+  }
+}
+db.customers.find()
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f985'),
+  customer_id: 1,
+  name: 'Saran',
+  email: 'saran@gmail.com',
+  phone: '9876543210',
+  city: 'Bangalore'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f986'),
+  customer_id: 2,
+  name: 'Priya',
+  email: 'priya@gmail.com',
+  phone: '9876543211',
+  city: 'Hyderabad'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f987'),
+  customer_id: 3,
+  name: 'Rahul',
+  email: 'rahul@gmail.com',
+  phone: '9876543212',
+  city: 'Chennai'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f988'),
+  customer_id: 4,
+  name: 'Deepa',
+  email: 'deepa@gmail.com',
+  phone: '9876543213',
+  city: 'Pune'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f989'),
+  customer_id: 5,
+  name: 'Anjali',
+  email: 'anjali@gmail.com',
+  phone: '9876543214',
+  city: 'Bangalore'
+}
+db.customers.find({city:"Bangalore"})
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f985'),
+  customer_id: 1,
+  name: 'Saran',
+  email: 'saran@gmail.com',
+  phone: '9876543210',
+  city: 'Bangalore'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f989'),
+  customer_id: 5,
+  name: 'Anjali',
+  email: 'anjali@gmail.com',
+  phone: '9876543214',
+  city: 'Bangalore'
+}
+db.customers.find({city:{$ne:"Hyderabad"}})
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f985'),
+  customer_id: 1,
+  name: 'Saran',
+  email: 'saran@gmail.com',
+  phone: '9876543210',
+  city: 'Bangalore'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f987'),
+  customer_id: 3,
+  name: 'Rahul',
+  email: 'rahul@gmail.com',
+  phone: '9876543212',
+  city: 'Chennai'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f988'),
+  customer_id: 4,
+  name: 'Deepa',
+  email: 'deepa@gmail.com',
+  phone: '9876543213',
+  city: 'Pune'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f989'),
+  customer_id: 5,
+  name: 'Anjali',
+  email: 'anjali@gmail.com',
+  phone: '9876543214',
+  city: 'Bangalore'
+}
+db.customers.find({name:/^S/})
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f985'),
+  customer_id: 1,
+  name: 'Saran',
+  email: 'saran@gmail.com',
+  phone: '9876543210',
+  city: 'Bangalore'
+}
+db.customers.find({name:/a$/})
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f986'),
+  customer_id: 2,
+  name: 'Priya',
+  email: 'priya@gmail.com',
+  phone: '9876543211',
+  city: 'Hyderabad'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f988'),
+  customer_id: 4,
+  name: 'Deepa',
+  email: 'deepa@gmail.com',
+  phone: '9876543213',
+  city: 'Pune'
+}
+db.customers.find({name:/ar/})
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f985'),
+  customer_id: 1,
+  name: 'Saran',
+  email: 'saran@gmail.com',
+  phone: '9876543210',
+  city: 'Bangalore'
+}
+db.customers.find({
+    city:{$in:["Bangalore","Chennai"]}
+})
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f985'),
+  customer_id: 1,
+  name: 'Saran',
+  email: 'saran@gmail.com',
+  phone: '9876543210',
+  city: 'Bangalore'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f987'),
+  customer_id: 3,
+  name: 'Rahul',
+  email: 'rahul@gmail.com',
+  phone: '9876543212',
+  city: 'Chennai'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f989'),
+  customer_id: 5,
+  name: 'Anjali',
+  email: 'anjali@gmail.com',
+  phone: '9876543214',
+  city: 'Bangalore'
+}
+db.customers.find({
+    city:"Bangalore",
+    name:/^A/
+})
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f989'),
+  customer_id: 5,
+  name: 'Anjali',
+  email: 'anjali@gmail.com',
+  phone: '9876543214',
+  city: 'Bangalore'
+}
+db.customers.find({
+    city:{$in:["Bangalore","Hyderabad","Pune"]}
+})
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f985'),
+  customer_id: 1,
+  name: 'Saran',
+  email: 'saran@gmail.com',
+  phone: '9876543210',
+  city: 'Bangalore'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f986'),
+  customer_id: 2,
+  name: 'Priya',
+  email: 'priya@gmail.com',
+  phone: '9876543211',
+  city: 'Hyderabad'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f988'),
+  customer_id: 4,
+  name: 'Deepa',
+  email: 'deepa@gmail.com',
+  phone: '9876543213',
+  city: 'Pune'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f989'),
+  customer_id: 5,
+  name: 'Anjali',
+  email: 'anjali@gmail.com',
+  phone: '9876543214',
+  city: 'Bangalore'
+}
+db.customers.find().sort({name:1})
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f989'),
+  customer_id: 5,
+  name: 'Anjali',
+  email: 'anjali@gmail.com',
+  phone: '9876543214',
+  city: 'Bangalore'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f988'),
+  customer_id: 4,
+  name: 'Deepa',
+  email: 'deepa@gmail.com',
+  phone: '9876543213',
+  city: 'Pune'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f986'),
+  customer_id: 2,
+  name: 'Priya',
+  email: 'priya@gmail.com',
+  phone: '9876543211',
+  city: 'Hyderabad'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f987'),
+  customer_id: 3,
+  name: 'Rahul',
+  email: 'rahul@gmail.com',
+  phone: '9876543212',
+  city: 'Chennai'
+}
+{
+  _id: ObjectId('6a3413fbe8ce041a34f7f985'),
+  customer_id: 1,
+  name: 'Saran',
+  email: 'saran@gmail.com',
+  phone: '9876543210',
+  city: 'Bangalore'
+}
+db.customers.aggregate([
+    {$count:"total_customers"}
+])
+{
+  total_customers: 5
+}
+db.customers.aggregate([
+    {$count:"total_customers"}
+])
+{
+  total_customers: 5
+}
+db.customers.aggregate([
+    {
+        $group:{
+            _id:"$city",
+            count:{$sum:1}
+        }
+    }
+])
+{
+  _id: 'Bangalore',
+  count: 2
+}
+{
+  _id: 'Pune',
+  count: 1
+}
+{
+  _id: 'Hyderabad',
+  count: 1
+}
+{
+  _id: 'Chennai',
+  count: 1
+}
+db.customers.aggregate([
+    {
+        $group:{
+            _id:"$city",
+            count:{$sum:1}
+        }
+    },
+    {$sort:{count:-1}},
+    {$limit:1}
+])
+{
+  _id: 'Bangalore',
+  count: 2
+}
+db.customers.aggregate([
+    {
+        $group:{
+            _id:"$city",
+            count:{$sum:1}
+        }
+    },
+    {
+        $match:{count:{$gt:1}}
+    }
+])
+{
+  _id: 'Bangalore',
+  count: 2
+}
+db.restaurants.find()
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98a'),
+  restaurant_id: 101,
+  restaurant_name: 'Pizza Hut',
+  city: 'Bangalore',
+  rating: 4.5
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98b'),
+  restaurant_id: 102,
+  restaurant_name: 'Dominos',
+  city: 'Hyderabad',
+  rating: 4.3
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98c'),
+  restaurant_id: 103,
+  restaurant_name: 'Burger King',
+  city: 'Chennai',
+  rating: 4.4
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98d'),
+  restaurant_id: 104,
+  restaurant_name: 'KFC',
+  city: 'Pune',
+  rating: 4.2
+}
+db.restaurants.find({city:"Bangalore"})
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98a'),
+  restaurant_id: 101,
+  restaurant_name: 'Pizza Hut',
+  city: 'Bangalore',
+  rating: 4.5
+}
+db.restaurants.find({rating:{$gt:4.3}})
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98a'),
+  restaurant_id: 101,
+  restaurant_name: 'Pizza Hut',
+  city: 'Bangalore',
+  rating: 4.5
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98c'),
+  restaurant_id: 103,
+  restaurant_name: 'Burger King',
+  city: 'Chennai',
+  rating: 4.4
+}
+db.restaurants.find({
+    rating:{$gte:4.2,$lte:4.5}
+})
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98a'),
+  restaurant_id: 101,
+  restaurant_name: 'Pizza Hut',
+  city: 'Bangalore',
+  rating: 4.5
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98b'),
+  restaurant_id: 102,
+  restaurant_name: 'Dominos',
+  city: 'Hyderabad',
+  rating: 4.3
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98c'),
+  restaurant_id: 103,
+  restaurant_name: 'Burger King',
+  city: 'Chennai',
+  rating: 4.4
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98d'),
+  restaurant_id: 104,
+  restaurant_name: 'KFC',
+  city: 'Pune',
+  rating: 4.2
+}
+db.restaurants.find({restaurant_name:/^P/})
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98a'),
+  restaurant_id: 101,
+  restaurant_name: 'Pizza Hut',
+  city: 'Bangalore',
+  rating: 4.5
+}
+db.restaurants.find({restaurant_name:/King/})
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98c'),
+  restaurant_id: 103,
+  restaurant_name: 'Burger King',
+  city: 'Chennai',
+  rating: 4.4
+}
+db.restaurants.find({
+    city:{$in:["Chennai","Hyderabad"]}
+})
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98b'),
+  restaurant_id: 102,
+  restaurant_name: 'Dominos',
+  city: 'Hyderabad',
+  rating: 4.3
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98c'),
+  restaurant_id: 103,
+  restaurant_name: 'Burger King',
+  city: 'Chennai',
+  rating: 4.4
+}
+db.restaurants.find({
+    city:{$in:["Chennai","Hyderabad"]}
+})
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98b'),
+  restaurant_id: 102,
+  restaurant_name: 'Dominos',
+  city: 'Hyderabad',
+  rating: 4.3
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98c'),
+  restaurant_id: 103,
+  restaurant_name: 'Burger King',
+  city: 'Chennai',
+  rating: 4.4
+}
+db.restaurants.find({city:{$ne:"Pune"}})
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98a'),
+  restaurant_id: 101,
+  restaurant_name: 'Pizza Hut',
+  city: 'Bangalore',
+  rating: 4.5
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98b'),
+  restaurant_id: 102,
+  restaurant_name: 'Dominos',
+  city: 'Hyderabad',
+  rating: 4.3
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98c'),
+  restaurant_id: 103,
+  restaurant_name: 'Burger King',
+  city: 'Chennai',
+  rating: 4.4
+}
+db.restaurants.find().sort({rating:-1})
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98a'),
+  restaurant_id: 101,
+  restaurant_name: 'Pizza Hut',
+  city: 'Bangalore',
+  rating: 4.5
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98c'),
+  restaurant_id: 103,
+  restaurant_name: 'Burger King',
+  city: 'Chennai',
+  rating: 4.4
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98b'),
+  restaurant_id: 102,
+  restaurant_name: 'Dominos',
+  city: 'Hyderabad',
+  rating: 4.3
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98d'),
+  restaurant_id: 104,
+  restaurant_name: 'KFC',
+  city: 'Pune',
+  rating: 4.2
+}
+db.restaurants.find().sort({rating:-1}).limit(3)
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98a'),
+  restaurant_id: 101,
+  restaurant_name: 'Pizza Hut',
+  city: 'Bangalore',
+  rating: 4.5
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98c'),
+  restaurant_id: 103,
+  restaurant_name: 'Burger King',
+  city: 'Chennai',
+  rating: 4.4
+}
+{
+  _id: ObjectId('6a341456e8ce041a34f7f98b'),
+  restaurant_id: 102,
+  restaurant_name: 'Dominos',
+  city: 'Hyderabad',
+  rating: 4.3
+}
+db.restaurants.aggregate([
+    {
+        $group:{
+            _id:null,
+            avgRating:{$avg:"$rating"}
+        }
+    }
+])
+{
+  _id: null,
+  avgRating: 4.35
+}
+db.restaurants.aggregate([
+    {
+        $group:{
+            _id:null,
+            highestRating:{$max:"$rating"}
+        }
+    }
+])
+{
+  _id: null,
+  highestRating: 4.5
+}
+db.restaurants.aggregate([
+    {
+        $group:{
+            _id:null,
+            lowestRating:{$min:"$rating"}
+        }
+    }
+])
+{
+  _id: null,
+  lowestRating: 4.2
+}
+db.restaurants.aggregate([
+    {
+        $group:{
+            _id:"$city",
+            count:{$sum:1}
+        }
+    }
+])
+{
+  _id: 'Hyderabad',
+  count: 1
+}
+{
+  _id: 'Pune',
+  count: 1
+}
+{
+  _id: 'Bangalore',
+  count: 1
+}
+{
+  _id: 'Chennai',
+  count: 1
+}
+db.restaurants.aggregate([
+    {
+        $group:{
+            _id:"$city",
+            count:{$sum:1}
+        }
+    },
+    {
+        $match:{count:{$gt:1}}
+    }
+])
+db.menu.find()
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98e'),
+  item_id: 1,
+  restaurant_id: 101,
+  item_name: 'Veg Pizza',
+  price: 250
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98f'),
+  item_id: 2,
+  restaurant_id: 101,
+  item_name: 'Chicken Pizza',
+  price: 350
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f990'),
+  item_id: 3,
+  restaurant_id: 102,
+  item_name: 'Cheese Burst Pizza',
+  price: 300
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f991'),
+  item_id: 4,
+  restaurant_id: 103,
+  item_name: 'Veg Burger',
+  price: 180
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f992'),
+  item_id: 5,
+  restaurant_id: 104,
+  item_name: 'Chicken Bucket',
+  price: 550
+}
+db.menu.find({price:{$gt:250}})
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98f'),
+  item_id: 2,
+  restaurant_id: 101,
+  item_name: 'Chicken Pizza',
+  price: 350
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f990'),
+  item_id: 3,
+  restaurant_id: 102,
+  item_name: 'Cheese Burst Pizza',
+  price: 300
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f992'),
+  item_id: 5,
+  restaurant_id: 104,
+  item_name: 'Chicken Bucket',
+  price: 550
+}
+db.menu.find({
+    price:{$gte:200,$lte:400}
+})
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98e'),
+  item_id: 1,
+  restaurant_id: 101,
+  item_name: 'Veg Pizza',
+  price: 250
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98f'),
+  item_id: 2,
+  restaurant_id: 101,
+  item_name: 'Chicken Pizza',
+  price: 350
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f990'),
+  item_id: 3,
+  restaurant_id: 102,
+  item_name: 'Cheese Burst Pizza',
+  price: 300
+}
+db.menu.find({restaurant_id:101})
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98e'),
+  item_id: 1,
+  restaurant_id: 101,
+  item_name: 'Veg Pizza',
+  price: 250
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98f'),
+  item_id: 2,
+  restaurant_id: 101,
+  item_name: 'Chicken Pizza',
+  price: 350
+}
+db.menu.find({item_name:/^C/})
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98f'),
+  item_id: 2,
+  restaurant_id: 101,
+  item_name: 'Chicken Pizza',
+  price: 350
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f990'),
+  item_id: 3,
+  restaurant_id: 102,
+  item_name: 'Cheese Burst Pizza',
+  price: 300
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f992'),
+  item_id: 5,
+  restaurant_id: 104,
+  item_name: 'Chicken Bucket',
+  price: 550
+}
+db.menu.find({item_name:/Pizza/})
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98e'),
+  item_id: 1,
+  restaurant_id: 101,
+  item_name: 'Veg Pizza',
+  price: 250
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98f'),
+  item_id: 2,
+  restaurant_id: 101,
+  item_name: 'Chicken Pizza',
+  price: 350
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f990'),
+  item_id: 3,
+  restaurant_id: 102,
+  item_name: 'Cheese Burst Pizza',
+  price: 300
+}
+db.menu.find().sort({price:1})
+{
+  _id: ObjectId('6a341479e8ce041a34f7f991'),
+  item_id: 4,
+  restaurant_id: 103,
+  item_name: 'Veg Burger',
+  price: 180
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98e'),
+  item_id: 1,
+  restaurant_id: 101,
+  item_name: 'Veg Pizza',
+  price: 250
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f990'),
+  item_id: 3,
+  restaurant_id: 102,
+  item_name: 'Cheese Burst Pizza',
+  price: 300
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98f'),
+  item_id: 2,
+  restaurant_id: 101,
+  item_name: 'Chicken Pizza',
+  price: 350
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f992'),
+  item_id: 5,
+  restaurant_id: 104,
+  item_name: 'Chicken Bucket',
+  price: 550
+}
+db.menu.find().sort({price:-1}).limit(3)
+{
+  _id: ObjectId('6a341479e8ce041a34f7f992'),
+  item_id: 5,
+  restaurant_id: 104,
+  item_name: 'Chicken Bucket',
+  price: 550
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98f'),
+  item_id: 2,
+  restaurant_id: 101,
+  item_name: 'Chicken Pizza',
+  price: 350
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f990'),
+  item_id: 3,
+  restaurant_id: 102,
+  item_name: 'Cheese Burst Pizza',
+  price: 300
+}
+db.menu.find({price:{$lt:300}})
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98e'),
+  item_id: 1,
+  restaurant_id: 101,
+  item_name: 'Veg Pizza',
+  price: 250
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f991'),
+  item_id: 4,
+  restaurant_id: 103,
+  item_name: 'Veg Burger',
+  price: 180
+}
+db.menu.find({price:{$ne:350}})
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98e'),
+  item_id: 1,
+  restaurant_id: 101,
+  item_name: 'Veg Pizza',
+  price: 250
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f990'),
+  item_id: 3,
+  restaurant_id: 102,
+  item_name: 'Cheese Burst Pizza',
+  price: 300
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f991'),
+  item_id: 4,
+  restaurant_id: 103,
+  item_name: 'Veg Burger',
+  price: 180
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f992'),
+  item_id: 5,
+  restaurant_id: 104,
+  item_name: 'Chicken Bucket',
+  price: 550
+}
+db.menu.find({price:{$ne:350}})
+{
+  _id: ObjectId('6a341479e8ce041a34f7f98e'),
+  item_id: 1,
+  restaurant_id: 101,
+  item_name: 'Veg Pizza',
+  price: 250
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f990'),
+  item_id: 3,
+  restaurant_id: 102,
+  item_name: 'Cheese Burst Pizza',
+  price: 300
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f991'),
+  item_id: 4,
+  restaurant_id: 103,
+  item_name: 'Veg Burger',
+  price: 180
+}
+{
+  _id: ObjectId('6a341479e8ce041a34f7f992'),
+  item_id: 5,
+  restaurant_id: 104,
+  item_name: 'Chicken Bucket',
+  price: 550
+}
+db.menu.aggregate([
+{
+$group:{
+_id:null,
+avgPrice:{$avg:"$price"}
+}
+}
+])
+{
+  _id: null,
+  avgPrice: 326
+}
+db.menu.aggregate([
+{
+$group:{
+_id:null,
+maxPrice:{$max:"$price"}
+}
+}
+])
+{
+  _id: null,
+  maxPrice: 550
+}
+db.menu.aggregate([
+{
+$group:{
+_id:null,
+minPrice:{$min:"$price"}
+}
+}
+])
+{
+  _id: null,
+  minPrice: 180
+}
+db.menu.aggregate([
+{
+$group:{
+_id:null,
+totalPrice:{$sum:"$price"}
+}
+}
+])
+{
+  _id: null,
+  totalPrice: 1630
+}
+db.menu.aggregate([
+{
+$group:{
+_id:"$restaurant_id",
+menuCount:{$sum:1}
+}
+}
+])
+{
+  _id: 101,
+  menuCount: 2
+}
+{
+  _id: 102,
+  menuCount: 1
+}
+{
+  _id: 103,
+  menuCount: 1
+}
+{
+  _id: 104,
+  menuCount: 1
+}
+db.orders.find()
+{
+  _id: ObjectId('6a341482e8ce041a34f7f993'),
+  order_id: 1001,
+  customer_id: 1,
+  restaurant_id: 101,
+  items: [
+    {
+      item_name: 'Veg Pizza',
+      quantity: 2,
+      price: 250
+    }
+  ],
+  total_amount: 500,
+  status: 'Delivered'
+}
+{
+  _id: ObjectId('6a341482e8ce041a34f7f994'),
+  order_id: 1002,
+  customer_id: 2,
+  restaurant_id: 102,
+  items: [
+    {
+      item_name: 'Cheese Burst Pizza',
+      quantity: 1,
+      price: 300
+    }
+  ],
+  total_amount: 300,
+  status: 'Pending'
+}
+{
+  _id: ObjectId('6a341482e8ce041a34f7f995'),
+  order_id: 1003,
+  customer_id: 3,
+  restaurant_id: 103,
+  items: [
+    {
+      item_name: 'Veg Burger',
+      quantity: 2,
+      price: 180
+    }
+  ],
+  total_amount: 360,
+  status: 'Delivered'
+}
+db.orders.find({status:"Pending"})
+{
+  _id: ObjectId('6a341482e8ce041a34f7f994'),
+  order_id: 1002,
+  customer_id: 2,
+  restaurant_id: 102,
+  items: [
+    {
+      item_name: 'Cheese Burst Pizza',
+      quantity: 1,
+      price: 300
+    }
+  ],
+  total_amount: 300,
+  status: 'Pending'
+}
+db.orders.find({total_amount:{$gt:400}})
+{
+  _id: ObjectId('6a341482e8ce041a34f7f993'),
+  order_id: 1001,
+  customer_id: 1,
+  restaurant_id: 101,
+  items: [
+    {
+      item_name: 'Veg Pizza',
+      quantity: 2,
+      price: 250
+    }
+  ],
+  total_amount: 500,
+  status: 'Delivered'
+}
+db.orders.find({
+total_amount:{$gte:300,$lte:600}
+})
+{
+  _id: ObjectId('6a341482e8ce041a34f7f993'),
+  order_id: 1001,
+  customer_id: 1,
+  restaurant_id: 101,
+  items: [
+    {
+      item_name: 'Veg Pizza',
+      quantity: 2,
+      price: 250
+    }
+  ],
+  total_amount: 500,
+  status: 'Delivered'
+}
+{
+  _id: ObjectId('6a341482e8ce041a34f7f994'),
+  order_id: 1002,
+  customer_id: 2,
+  restaurant_id: 102,
+  items: [
+    {
+      item_name: 'Cheese Burst Pizza',
+      quantity: 1,
+      price: 300
+    }
+  ],
+  total_amount: 300,
+  status: 'Pending'
+}
+{
+  _id: ObjectId('6a341482e8ce041a34f7f995'),
+  order_id: 1003,
+  customer_id: 3,
+  restaurant_id: 103,
+  items: [
+    {
+      item_name: 'Veg Burger',
+      quantity: 2,
+      price: 180
+    }
+  ],
+  total_amount: 360,
+  status: 'Delivered'
+}
+db.orders.find({customer_id:1})
+{
+  _id: ObjectId('6a341482e8ce041a34f7f993'),
+  order_id: 1001,
+  customer_id: 1,
+  restaurant_id: 101,
+  items: [
+    {
+      item_name: 'Veg Pizza',
+      quantity: 2,
+      price: 250
+    }
+  ],
+  total_amount: 500,
+  status: 'Delivered'
+}
+db.orders.find().sort({total_amount:-1})
+{
+  _id: ObjectId('6a341482e8ce041a34f7f993'),
+  order_id: 1001,
+  customer_id: 1,
+  restaurant_id: 101,
+  items: [
+    {
+      item_name: 'Veg Pizza',
+      quantity: 2,
+      price: 250
+    }
+  ],
+  total_amount: 500,
+  status: 'Delivered'
+}
+{
+  _id: ObjectId('6a341482e8ce041a34f7f995'),
+  order_id: 1003,
+  customer_id: 3,
+  restaurant_id: 103,
+  items: [
+    {
+      item_name: 'Veg Burger',
+      quantity: 2,
+      price: 180
+    }
+  ],
+  total_amount: 360,
+  status: 'Delivered'
+}
+{
+  _id: ObjectId('6a341482e8ce041a34f7f994'),
+  order_id: 1002,
+  customer_id: 2,
+  restaurant_id: 102,
+  items: [
+    {
+      item_name: 'Cheese Burst Pizza',
+      quantity: 1,
+      price: 300
+    }
+  ],
+  total_amount: 300,
+  status: 'Pending'
+}
+db.orders.find().sort({total_amount:-1}).limit(3)
+{
+  _id: ObjectId('6a341482e8ce041a34f7f993'),
+  order_id: 1001,
+  customer_id: 1,
+  restaurant_id: 101,
+  items: [
+    {
+      item_name: 'Veg Pizza',
+      quantity: 2,
+      price: 250
+    }
+  ],
+  total_amount: 500,
+  status: 'Delivered'
+}
+{
+  _id: ObjectId('6a341482e8ce041a34f7f995'),
+  order_id: 1003,
+  customer_id: 3,
+  restaurant_id: 103,
+  items: [
+    {
+      item_name: 'Veg Burger',
+      quantity: 2,
+      price: 180
+    }
+  ],
+  total_amount: 360,
+  status: 'Delivered'
+}
+{
+  _id: ObjectId('6a341482e8ce041a34f7f994'),
+  order_id: 1002,
+  customer_id: 2,
+  restaurant_id: 102,
+  items: [
+    {
+      item_name: 'Cheese Burst Pizza',
+      quantity: 1,
+      price: 300
+    }
+  ],
+  total_amount: 300,
+  status: 'Pending'
+}
+db.orders.find({status:{$ne:"Delivered"}})
+{
+  _id: ObjectId('6a341482e8ce041a34f7f994'),
+  order_id: 1002,
+  customer_id: 2,
+  restaurant_id: 102,
+  items: [
+    {
+      item_name: 'Cheese Burst Pizza',
+      quantity: 1,
+      price: 300
+    }
+  ],
+  total_amount: 300,
+  status: 'Pending'
+}
+db.orders.find({
+total_amount:{$gt:300},
+status:"Delivered"
+})
+{
+  _id: ObjectId('6a341482e8ce041a34f7f993'),
+  order_id: 1001,
+  customer_id: 1,
+  restaurant_id: 101,
+  items: [
+    {
+      item_name: 'Veg Pizza',
+      quantity: 2,
+      price: 250
+    }
+  ],
+  total_amount: 500,
+  status: 'Delivered'
+}
+{
+  _id: ObjectId('6a341482e8ce041a34f7f995'),
+  order_id: 1003,
+  customer_id: 3,
+  restaurant_id: 103,
+  items: [
+    {
+      item_name: 'Veg Burger',
+      quantity: 2,
+      price: 180
+    }
+  ],
+  total_amount: 360,
+  status: 'Delivered'
+}
+db.orders.aggregate([
+{
+$group:{
+_id:null,
+totalRevenue:{$sum:"$total_amount"}
+}
+}
+])
+{
+  _id: null,
+  totalRevenue: 1160
+}
+db.orders.aggregate([
+{
+$group:{
+_id:null,
+avgAmount:{$avg:"$total_amount"}
+}
+}
+])
+{
+  _id: null,
+  avgAmount: 386.6666666666667
+}
+db.orders.aggregate([
+{
+$group:{
+_id:null,
+maxAmount:{$max:"$total_amount"}
+}
+}
+])
+{
+  _id: null,
+  maxAmount: 500
+}
+db.orders.aggregate([
+{
+$group:{
+_id:null,
+minAmount:{$min:"$total_amount"}
+}
+}
+])
+{
+  _id: null,
+  minAmount: 300
+}
+db.orders.aggregate([
+{
+$group:{
+_id:"$status",
+count:{$sum:1}
+}
+}
+])
+{
+  _id: 'Pending',
+  count: 1
+}
+{
+  _id: 'Delivered',
+  count: 2
+}
+db.orders.aggregate([
+{
+$group:{
+_id:"$status",
+count:{$sum:1}
+}
+},
+{
+$match:{count:{$gt:1}}
+}
+])
+{
+  _id: 'Delivered',
+  count: 2
+}
+db.orders.aggregate([
+{
+$group:{
+_id:"$status",
+count:{$sum:1}
+}
+},
+{
+$sort:{count:-1}
+}
+])
+{
+  _id: 'Delivered',
+  count: 2
+}
+{
+  _id: 'Pending',
+  count: 1
+}
+db.orders.aggregate([
+{
+$match:{status:"Delivered"}
+},
+{
+$group:{
+_id:null,
+totalRevenue:{$sum:"$total_amount"}
+}
+}
+])
+{
+  _id: null,
+  totalRevenue: 860
+}
+db.orders.aggregate([
+{
+$match:{status:"Delivered"}
+},
+{
+$group:{
+_id:null,
+avgAmount:{$avg:"$total_amount"}
+}
+}
+])
+{
+  _id: null,
+  avgAmount: 430
+}
+db.orders.aggregate([
+{
+$group:{
+_id:"$customer_id",
+orderCount:{$sum:1}
+}
+}
+])
+{
+  _id: 2,
+  orderCount: 1
+}
+{
+  _id: 3,
+  orderCount: 1
+}
+{
+  _id: 1,
+  orderCount: 1
+}
+db.payments.find()
+{
+  _id: ObjectId('6a341493e8ce041a34f7f996'),
+  payment_id: 501,
+  order_id: 1001,
+  payment_method: 'UPI',
+  amount: 500,
+  status: 'Success'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f997'),
+  payment_id: 502,
+  order_id: 1002,
+  payment_method: 'Credit Card',
+  amount: 300,
+  status: 'Pending'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f998'),
+  payment_id: 503,
+  order_id: 1003,
+  payment_method: 'Cash',
+  amount: 360,
+  status: 'Success'
+}
+db.payments.find({status:"Success"})
+{
+  _id: ObjectId('6a341493e8ce041a34f7f996'),
+  payment_id: 501,
+  order_id: 1001,
+  payment_method: 'UPI',
+  amount: 500,
+  status: 'Success'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f998'),
+  payment_id: 503,
+  order_id: 1003,
+  payment_method: 'Cash',
+  amount: 360,
+  status: 'Success'
+}
+db.payments.find({status:"Pending"})
+{
+  _id: ObjectId('6a341493e8ce041a34f7f997'),
+  payment_id: 502,
+  order_id: 1002,
+  payment_method: 'Credit Card',
+  amount: 300,
+  status: 'Pending'
+}
+db.payments.find({payment_method:"UPI"})
+{
+  _id: ObjectId('6a341493e8ce041a34f7f996'),
+  payment_id: 501,
+  order_id: 1001,
+  payment_method: 'UPI',
+  amount: 500,
+  status: 'Success'
+}
+db.payments.find({amount:{$gt:300}})
+{
+  _id: ObjectId('6a341493e8ce041a34f7f996'),
+  payment_id: 501,
+  order_id: 1001,
+  payment_method: 'UPI',
+  amount: 500,
+  status: 'Success'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f998'),
+  payment_id: 503,
+  order_id: 1003,
+  payment_method: 'Cash',
+  amount: 360,
+  status: 'Success'
+}
+db.payments.find().sort({amount:1})
+{
+  _id: ObjectId('6a341493e8ce041a34f7f997'),
+  payment_id: 502,
+  order_id: 1002,
+  payment_method: 'Credit Card',
+  amount: 300,
+  status: 'Pending'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f998'),
+  payment_id: 503,
+  order_id: 1003,
+  payment_method: 'Cash',
+  amount: 360,
+  status: 'Success'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f996'),
+  payment_id: 501,
+  order_id: 1001,
+  payment_method: 'UPI',
+  amount: 500,
+  status: 'Success'
+}
+db.payments.find().sort({amount:-1}).limit(3)
+{
+  _id: ObjectId('6a341493e8ce041a34f7f996'),
+  payment_id: 501,
+  order_id: 1001,
+  payment_method: 'UPI',
+  amount: 500,
+  status: 'Success'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f998'),
+  payment_id: 503,
+  order_id: 1003,
+  payment_method: 'Cash',
+  amount: 360,
+  status: 'Success'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f997'),
+  payment_id: 502,
+  order_id: 1002,
+  payment_method: 'Credit Card',
+  amount: 300,
+  status: 'Pending'
+}
+db.payments.find({status:{$ne:"Success"}})
+{
+  _id: ObjectId('6a341493e8ce041a34f7f997'),
+  payment_id: 502,
+  order_id: 1002,
+  payment_method: 'Credit Card',
+  amount: 300,
+  status: 'Pending'
+}
+db.payments.find({
+payment_method:{$in:["Cash","UPI"]}
+})
+{
+  _id: ObjectId('6a341493e8ce041a34f7f996'),
+  payment_id: 501,
+  order_id: 1001,
+  payment_method: 'UPI',
+  amount: 500,
+  status: 'Success'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f998'),
+  payment_id: 503,
+  order_id: 1003,
+  payment_method: 'Cash',
+  amount: 360,
+  status: 'Success'
+}
+db.payments.find({
+payment_method:{$in:["Cash","UPI"]}
+})
+{
+  _id: ObjectId('6a341493e8ce041a34f7f996'),
+  payment_id: 501,
+  order_id: 1001,
+  payment_method: 'UPI',
+  amount: 500,
+  status: 'Success'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f998'),
+  payment_id: 503,
+  order_id: 1003,
+  payment_method: 'Cash',
+  amount: 360,
+  status: 'Success'
+}
+db.payments.find({
+payment_method:{$in:["Cash","UPI"]}
+})
+{
+  _id: ObjectId('6a341493e8ce041a34f7f996'),
+  payment_id: 501,
+  order_id: 1001,
+  payment_method: 'UPI',
+  amount: 500,
+  status: 'Success'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f998'),
+  payment_id: 503,
+  order_id: 1003,
+  payment_method: 'Cash',
+  amount: 360,
+  status: 'Success'
+}
+db.payments.find({
+amount:{$gte:300,$lte:500}
+})
+{
+  _id: ObjectId('6a341493e8ce041a34f7f996'),
+  payment_id: 501,
+  order_id: 1001,
+  payment_method: 'UPI',
+  amount: 500,
+  status: 'Success'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f997'),
+  payment_id: 502,
+  order_id: 1002,
+  payment_method: 'Credit Card',
+  amount: 300,
+  status: 'Pending'
+}
+{
+  _id: ObjectId('6a341493e8ce041a34f7f998'),
+  payment_id: 503,
+  order_id: 1003,
+  payment_method: 'Cash',
+  amount: 360,
+  status: 'Success'
+}
+db.payments.aggregate([
+{
+$group:{
+_id:null,
+totalAmount:{$sum:"$amount"}
+}
+}
+])
+{
+  _id: null,
+  totalAmount: 1160
+}
+db.payments.aggregate([
+{
+$group:{
+_id:null,
+avgAmount:{$avg:"$amount"}
+}
+}
+])
+{
+  _id: null,
+  avgAmount: 386.6666666666667
+}
+db.payments.aggregate([
+{
+$group:{
+_id:null,
+minAmount:{$min:"$amount"}
+}
+}
+])
+{
+  _id: null,
+  minAmount: 300
+}
+db.payments.aggregate([
+{
+$group:{
+_id:"$payment_method",
+count:{$sum:1}
+}
+}
+])
+{
+  _id: 'UPI',
+  count: 1
+}
+{
+  _id: 'Credit Card',
+  count: 1
+}
+{
+  _id: 'Cash',
+  count: 1
+}
+db.payments.aggregate([
+{
+$group:{
+_id:"$status",
+count:{$sum:1}
+}
+}
+])
+{
+  _id: 'Pending',
+  count: 1
+}
+{
+  _id: 'Success',
+  count: 2
+}
+db.payments.aggregate([
+{
+$group:{
+_id:"$payment_method",
+count:{$sum:1}
+}
+},
+{
+$match:{count:{$gt:1}}
+}
+])
+db.payments.aggregate([
+{
+$match:{payment_method:"UPI"}
+},
+{
+$group:{
+_id:null,
+totalAmount:{$sum:"$amount"}
+}
+}
+])
+{
+  _id: null,
+  totalAmount: 500
+}
+db.payments.aggregate([
+{
+$match:{payment_method:"Credit Card"}
+},
+{
+$group:{
+_id:null,
+avgAmount:{$avg:"$amount"}
+}
+}
+])
+{
+  _id: null,
+  avgAmount: 300
+}
+db.payments.aggregate([
+{
+$group:{
+_id:"$payment_method",
+totalAmount:{$sum:"$amount"}
+}
+},
+{
+$sort:{totalAmount:-1}
+}
+])
+{
+  _id: 'UPI',
+  totalAmount: 500
+}
+{
+  _id: 'Cash',
+  totalAmount: 360
+}
+{
+  _id: 'Credit Card',
+  totalAmount: 300
+}
+db.delivery_agents.find()
+{
+  _id: ObjectId('6a3414b1e8ce041a34f7f999'),
+  agent_id: 1,
+  agent_name: 'Kumar',
+  city: 'Bangalore',
+  rating: 4.8
+}
+{
+  _id: ObjectId('6a3414b1e8ce041a34f7f99a'),
+  agent_id: 2,
+  agent_name: 'Arjun',
+  city: 'Hyderabad',
+  rating: 4.6
+}
+{
+  _id: ObjectId('6a3414b1e8ce041a34f7f99b'),
+  agent_id: 3,
+  agent_name: 'Sneha',
+  city: 'Chennai',
+  rating: 4.9
+}
+db.delivery_agents.find()
+{
+  _id: ObjectId('6a3414b1e8ce041a34f7f999'),
+  agent_id: 1,
+  agent_name: 'Kumar',
+  city: 'Bangalore',
+  rating: 4.8
+}
+{
+  _id: ObjectId('6a3414b1e8ce041a34f7f99a'),
+  agent_id: 2,
+  agent_name: 'Arjun',
+  city: 'Hyderabad',
+  rating: 4.6
+}
+{
+  _id: ObjectId('6a3414b1e8ce041a34f7f99b'),
+  agent_id: 3,
+  agent_name: 'Sneha',
+  city: 'Chennai',
+  rating: 4.9
+}
+db.delivery_agents.find({rating:{$gt:4.7}})
+{
+  _id: ObjectId('6a3414b1e8ce041a34f7f999'),
+  agent_id: 1,
+  agent_name: 'Kumar',
+  city: 'Bangalore',
+  rating: 4.8
+}
+{
+  _id: ObjectId('6a3414b1e8ce041a34f7f99b'),
+  agent_id: 3,
+  agent_name: 'Sneha',
+  city: 'Chennai',
+  rating: 4.9
+}
+db.delivery_agents.find({agent_name:/^A/})
+{
+  _id: ObjectId('6a3414b1e8ce041a34f7f99a'),
+  agent_id: 2,
+  agent_name: 'Arjun',
+  city: 'Hyderabad',
+  rating: 4.6
+}
+db.delivery_agents.find().sort({rating:-1})
+{
+  _id: ObjectId('6a3414b1e8ce041a34f7f99b'),
+  agent_id: 3,
+  agent_name: 'Sneha',
+  city: 'Chennai',
+  rating: 4.9
+}
+{
+  _id: ObjectId('6a3414b1e8ce041a34f7f999'),
+  agent_id: 1,
+  agent_name: 'Kumar',
+  city: 'Bangalore',
+  rating: 4.8
+}
+{
+  _id: ObjectId('6a3414b1e8ce041a34f7f99a'),
+  agent_id: 2,
+  agent_name: 'Arjun',
+  city: 'Hyderabad',
+  rating: 4.6
+}
+db.delivery_agents.aggregate([
+{
+$group:{
+_id:null,
+avgRating:{$avg:"$rating"}
+}
+}
+])
+{
+  _id: null,
+  avgRating: 4.766666666666667
+}
+db.delivery_agents.aggregate([
+{
+$group:{
+_id:null,
+maxRating:{$max:"$rating"}
+}
+}
+])
+{
+  _id: null,
+  maxRating: 4.9
+}
+db.delivery_agents.aggregate([
+{
+$group:{
+_id:null,
+minRating:{$min:"$rating"}
+}
+}
+])
+{
+  _id: null,
+  minRating: 4.6
+}
+db.delivery_agents.aggregate([
+{
+$group:{
+_id:"$city",
+count:{$sum:1}
+}
+}
+])
+{
+  _id: 'Bangalore',
+  count: 1
+}
+{
+  _id: 'Hyderabad',
+  count: 1
+}
+{
+  _id: 'Chennai',
+  count: 1
+}
+db.delivery_agents.aggregate([
+{
+$group:{
+_id:"$city",
+count:{$sum:1}
+}
+},
+{
+$match:{count:{$gt:1}}
+}
+])
+db.reviews.find()
+{
+  _id: ObjectId('6a3414bee8ce041a34f7f99c'),
+  review_id: 1,
+  customer_id: 1,
+  restaurant_id: 101,
+  rating: 5,
+  comment: 'Excellent service'
+}
+{
+  _id: ObjectId('6a3414bee8ce041a34f7f99d'),
+  review_id: 2,
+  customer_id: 2,
+  restaurant_id: 102,
+  rating: 4,
+  comment: 'Good taste'
+}
+{
+  _id: ObjectId('6a3414bee8ce041a34f7f99e'),
+  review_id: 3,
+  customer_id: 3,
+  restaurant_id: 103,
+  rating: 5,
+  comment: 'Very tasty'
+}
+db.reviews.find({rating:5})
+{
+  _id: ObjectId('6a3414bee8ce041a34f7f99c'),
+  review_id: 1,
+  customer_id: 1,
+  restaurant_id: 101,
+  rating: 5,
+  comment: 'Excellent service'
+}
+{
+  _id: ObjectId('6a3414bee8ce041a34f7f99e'),
+  review_id: 3,
+  customer_id: 3,
+  restaurant_id: 103,
+  rating: 5,
+  comment: 'Very tasty'
+}
+db.reviews.find({rating:{$gt:4}})
+{
+  _id: ObjectId('6a3414bee8ce041a34f7f99c'),
+  review_id: 1,
+  customer_id: 1,
+  restaurant_id: 101,
+  rating: 5,
+  comment: 'Excellent service'
+}
+{
+  _id: ObjectId('6a3414bee8ce041a34f7f99e'),
+  review_id: 3,
+  customer_id: 3,
+  restaurant_id: 103,
+  rating: 5,
+  comment: 'Very tasty'
+}
+db.reviews.find({customer_id:1})
+{
+  _id: ObjectId('6a3414bee8ce041a34f7f99c'),
+  review_id: 1,
+  customer_id: 1,
+  restaurant_id: 101,
+  rating: 5,
+  comment: 'Excellent service'
+}
+db.reviews.find().sort({rating:-1})
+{
+  _id: ObjectId('6a3414bee8ce041a34f7f99c'),
+  review_id: 1,
+  customer_id: 1,
+  restaurant_id: 101,
+  rating: 5,
+  comment: 'Excellent service'
+}
+{
+  _id: ObjectId('6a3414bee8ce041a34f7f99e'),
+  review_id: 3,
+  customer_id: 3,
+  restaurant_id: 103,
+  rating: 5,
+  comment: 'Very tasty'
+}
+{
+  _id: ObjectId('6a3414bee8ce041a34f7f99d'),
+  review_id: 2,
+  customer_id: 2,
+  restaurant_id: 102,
+  rating: 4,
+  comment: 'Good taste'
+}
+db.reviews.aggregate([
+{
+$group:{
+_id:null,
+avgRating:{$avg:"$rating"}
+}
+}
+])
+{
+  _id: null,
+  avgRating: 4.666666666666667
+}
+db.reviews.aggregate([
+{
+$group:{
+_id:null,
+maxRating:{$max:"$rating"}
+}
+}
+])
+{
+  _id: null,
+  maxRating: 5
+}
+db.reviews.aggregate([
+{
+$group:{
+_id:null,
+minRating:{$min:"$rating"}
+}
+}
+])
+{
+  _id: null,
+  minRating: 4
+}
+db.reviews.aggregate([
+{
+$group:{
+_id:"$restaurant_id",
+reviewCount:{$sum:1}
+}
+}
+])
+{
+  _id: 101,
+  reviewCount: 1
+}
+{
+  _id: 103,
+  reviewCount: 1
+}
+{
+  _id: 102,
+  reviewCount: 1
+}
+db.reviews.aggregate([
+{
+$group:{
+_id:"$restaurant_id",
+reviewCount:{$sum:1}
+}
+},
+{
+$match:{reviewCount:{$gt:1}}
+}
+])
+db.reviews.aggregate([
+{
+$group:{
+_id:"$restaurant_id",
+avgRating:{$avg:"$rating"}
+}
+}
+])
+{
+  _id: 101,
+  avgRating: 5
+}
+{
+  _id: 103,
+  avgRating: 5
+}
+{
+  _id: 102,
+  avgRating: 4
+}
+db.reviews.aggregate([
+{
+$group:{
+_id:"$restaurant_id",
+avgRating:{$avg:"$rating"}
+}
+},
+{
+$sort:{avgRating:-1}
+}
+])
+{
+  _id: 101,
+  avgRating: 5
+}
+{
+  _id: 103,
+  avgRating: 5
+}
+{
+  _id: 102,
+  avgRating: 4
+}
+db.reviews.aggregate([
+{
+$match:{rating:5}
+},
+{
+$count:"fiveStarReviews"
+}
+])
+{
+  fiveStarReviews: 2
+}
+db.reviews.aggregate([
+{
+$group:{
+_id:"$rating",
+count:{$sum:1}
+}
+}
+])
+{
+  _id: 5,
+  count: 2
+}
+{
+  _id: 4,
+  count: 1
+}
+db.reviews.aggregate([
+{
+$group:{
+_id:"$rating",
+count:{$sum:1}
+}
+},
+{
+$match:{count:{$gt:1}}
+}
+])
+{
+  _id: 5,
+  count: 2
+}
+db.orders.aggregate([
+{
+$group:{
+_id:"$restaurant_id",
+revenue:{$sum:"$total_amount"}
+}
+},
+{
+$sort:{revenue:-1}
+},
+{
+$limit:1
+}
+])
+{
+  _id: 101,
+  revenue: 500
+}
+db.orders.aggregate([
+{
+$group:{
+_id:"$customer_id",
+orderCount:{$sum:1}
+}
+},
+{
+$sort:{orderCount:-1}
+},
+{
+$limit:1
+}
+])
+{
+  _id: 1,
+  orderCount: 1
+}
+db.payments.aggregate([
+{
+$group:{
+_id:"$payment_method",
+count:{$sum:1}
+}
+},
+{
+$sort:{count:-1}
+},
+{
+$limit:1
+}
+])
+{
+  _id: 'Credit Card',
+  count: 1
+}
+db.customers.aggregate([
+{
+$group:{
+_id:"$city",
+customerCount:{$sum:1}
+}
+},
+{
+$sort:{customerCount:-1}
+},
+{
+$limit:1
+}
+])
+{
+  _id: 'Bangalore',
+  customerCount: 2
+}
+db.restaurants.aggregate([
+{
+$group:{
+_id:"$city",
+restaurantCount:{$sum:1}
+}
+},
+{
+$sort:{restaurantCount:-1}
+},
+{
+$limit:1
+}
+])
+{
+  _id: 'Pune',
+  restaurantCount: 1
+}
+db.reviews.aggregate([
+{
+$group:{
+_id:"$restaurant_id",
+avgRating:{$avg:"$rating"}
+}
+},
+{
+$sort:{avgRating:-1}
+},
+{
+$limit:3
+}
+])
+{
+  _id: 103,
+  avgRating: 5
+}
+{
+  _id: 101,
+  avgRating: 5
+}
+{
+  _id: 102,
+  avgRating: 4
+}
+db.orders.aggregate([
+{
+$group:{
+_id:"$customer_id",
+orderCount:{$sum:1}
+}
+},
+{
+$sort:{orderCount:-1}
+},
+{
+$limit:5
+}
+])
+{
+  _id: 2,
+  orderCount: 1
+}
+{
+  _id: 1,
+  orderCount: 1
+}
+{
+  _id: 3,
+  orderCount: 1
+}
+db.orders.aggregate([
+{
+$group:{
+_id:null,
+totalOrders:{$sum:1},
+deliveredOrders:{
+$sum:{
+$cond:[
+{$eq:["$status","Delivered"]},
+1,
+0
+]
+}
+}
+}
+},
+{
+$project:{
+_id:0,
+deliveryPercentage:{
+$multiply:[
+{$divide:["$deliveredOrders","$totalOrders"]},
+100
+]
+}
+}
+}
+])
+{
+  deliveryPercentage: 66.66666666666666
+}
+db.orders.aggregate([
+{
+$lookup:{
+from:"customers",
+localField:"customer_id",
+foreignField:"customer_id",
+as:"customer"
+}
+},
+{
+$unwind:"$customer"
+},
+{
+$group:{
+_id:"$customer.city",
+avgOrderAmount:{$avg:"$total_amount"}
+}
+}
+])
+{
+  _id: 'Hyderabad',
+  avgOrderAmount: 300
+}
+{
+  _id: 'Bangalore',
+  avgOrderAmount: 500
+}
+{
+  _id: 'Chennai',
+  avgOrderAmount: 360
+}
+
+
+
